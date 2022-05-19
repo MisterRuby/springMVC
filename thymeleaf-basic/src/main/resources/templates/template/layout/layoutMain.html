@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*
+     경호에 있는 fragment 에 지정한 태그들을 넘겨서 적용한 후 그 결과로 덮어씌움
+*/-->
+
+<head th:replace="template/layout/base :: common_header(~{::title},~{::link})">
+    <!--/* title 에 해당 태그가 넘어감 */-->
+    <title>메인 타이틀</title>
+
+    <!--/* link 에 해당 태그들이 넘어감 */-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
+</head>
+<body>
+메인 컨텐츠
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+<h1>컨텐츠에 데이터 출력하기</h1>
+<ul>
+  <li>th:text 사용 <span th:text="${data}"></span></li>
+  <li>컨텐츠 안에서 직접 출력하기 = [[${data}]]</li>
+
+  <li>HTML 엔티티 <span th:text="${escape}"></span></li>
+  <li>HTML 엔티티 = [[${escape}]]</li>
+
+  <li>Unescape <span th:utext="${escape}"></span></li>
+  <li>[(${escape})]</li>
+</ul>
+
+<form id="testForm" action="/basic/test">
+  <input type="text"  name="username">
+  <input type="number" name="age">
+</form>
+  <input id="btn" type="submit" value="전송" >
+<script>
+
+  $("#btn").on("click", function () {
+    let testForm = $("#testForm").serialize();
+
+    console.log(typeof testForm);
+    console.log(typeof JSON.stringify(testForm))
+
+    $.ajax({
+      url: "/basic/test",
+      async: false,
+      type: "post",
+      data: JSON.stringify(testForm),
+      contentType: 'application/json',
+      success: function (result) {
+        console.log(result);
+      },
+      error: function (a, b, c, d) {
+        console.log("errorA:" + a);
+        console.log("errorB:" + b);
+        console.log("errorC:" + c);
+        console.log("errorD:" + d);
+      }
+    });
+  });
+
+</script>
+
+</body>
+</html>

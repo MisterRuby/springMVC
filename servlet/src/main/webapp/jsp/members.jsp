@@ -1,7 +1,7 @@
 <%@ page import="ruby.servlet.domain.member.MemberRepository" %>
 <%@ page import="ruby.servlet.domain.member.Member" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>   
 <%
     MemberRepository memberRepository = MemberRepository.getInstance();
     List<Member> members = memberRepository.findAll();

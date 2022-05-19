@@ -1,0 +1,23 @@
+<!--/* layoutFile.html*/-->
+<!DOCTYPE html>
+<html th:fragment="layout (title, links, content)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:replace="${title}">레이아웃 타이틀</title>
+
+    <!--/* 파라미터로 받은 links 로 해당 태그를 덮어씌움 */-->
+    <th:block th:replace="${links}" />
+</head>
+<body>
+<h1>레이아웃 H1</h1>
+<div th:replace="${content}">
+    <p>레이아웃 컨텐츠</p>
+</div>
+<footer>
+    레이아웃 푸터
+</footer>
+</body>
+</html>
+<!--/*
+    공통적으로 사용할 큰 틀
+    title 과 content 만 외부에서 받은 내용으로 바꿈
+*/-->

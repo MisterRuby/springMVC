@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_header(title,links)">
+
+    <!--/* 해당 조각을 큰 틀로 사용하고 일부분을 외부에서 받아서 변경한 후 사용 */-->
+
+    <!--/* 파라미터로 받은 title 로 해당 태그를 덮어씌움 */-->
+    <title th:replace="${title}">레이아웃 타이틀</title>
+
+    <!-- 공통 -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/awesomeapp.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <script type="text/javascript" th:src="@{/sh/scripts/codebase.js}"></script>
+
+    <!-- 추가 -->
+    <!--/* 파라미터로 받은 links 로 해당 태그를 덮어씌움 */-->
+    <th:block th:replace="${links}" />
+
+</head>

@@ -1,0 +1,28 @@
+<!--/* layoutExtendMain.html*/-->
+<!DOCTYPE html>
+<!--/* 해당 경로의 fragment 로 교체됨 */-->
+<html th:replace="~{template/layoutExtend/layoutFile :: layout(~{::title}, ~{::link}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/* title 에 해당 태그가 넘어감 */-->
+    <title>메인 페이지 타이틀</title>
+
+    <!--/* link 에 해당 태그들이 넘어감 */-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
+</head>
+<body>
+
+<!--/* section 에 해당 태그들이 넘어감 */-->
+<section>
+    <p>메인 페이지 컨텐츠</p>
+    <div>메인 페이지 포함 내용</div>
+</section>
+</body>
+</html>
+
+<!--/*
+    1. th:replace 로 지정한 경로의 fragment에 변수로 선언한 태그들을 전달.
+    2. 지정한 경로의 fragment 에서 변수로 넘긴 태그들을 적용
+    3. 2에서 적용된 결과로 교체
+*/-->

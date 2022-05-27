@@ -1,15 +1,18 @@
 package ruby.exception;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import ruby.exception.resolver.MyHandlerExceptionResolver;
 import ruby.exception.filter.LogFilter;
 import ruby.exception.interceptor.LogInterceptor;
+import ruby.exception.resolver.UserHandlerExceptionResolver;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
+import java.util.List;
 
 // Configuration : 해당 클래스 Bean 으로 등록 + @Bean 반환 객체 Bean 등록
 @Configuration
@@ -36,5 +39,12 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**", "*.ico", "/error", "/error/**");
+                // /error, /error/** 는 BasicErrorController 호출시 고려. 해당 컨트롤러의 핸들러가 발생시 interceptor 실행을 막고싶다면 등록할 것
+    }
+
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(new MyHandlerExceptionResolver());
+        resolvers.add(new UserHandlerExceptionResolver());
     }
 }

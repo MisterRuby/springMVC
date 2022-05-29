@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--/* th:field 는 ${{}} 가 아닌 ${} 이여도 convert 가 적용된다. convert 를 적용하지 않은 값을 출력하려면 th:value 를 써야한다. */-->
+<form th:object="${form}" th:method="post">
+    th:field <input type="text" th:field="*{ipPort}"><br/>
+    th:value <input type="text" th:value="*{ipPort}">(보여주기 용도)<br/>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>
